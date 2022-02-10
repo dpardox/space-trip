@@ -1,7 +1,33 @@
 <div class="title is-4 is-uppercase has-text-centered has-text-white">login</div>
 
-<div class="mt-16">
-  <input class="input is-large mb-16" type="text" placeholder="Email">
-  <input class="input is-large mb-16" type="password" placeholder="Password">
-  <button class="button is-dark is-large is-fullwidth is-uppercase">Login</button>
-</div>
+<form class="mt-16" [formGroup]="form" (submit)="submit()" #f="ngForm">
+  <div class="field mb-16">
+    <p class="control has-icons-left has-icons-right">
+      <input formControlName="email" class="input is-large" type="text" placeholder="Email">
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right" *ngIf="email?.valid">
+        <i class="fas fa-check"></i>
+      </span>
+      <span class="icon is-small is-right" *ngIf="email?.invalid && (email?.dirty || email?.touched || f.submitted)">
+        <i class="fas fa-times"></i>
+      </span>
+    </p>
+  </div>
+  <div class="field mb-16">
+    <p class="control has-icons-left has-icons-right">
+      <input formControlName="password" class="input is-large" type="password" placeholder="Password">
+      <span class="icon is-small is-left">
+        <i class="fas fa-lock"></i>
+      </span>
+      <span class="icon is-small is-right" *ngIf="password?.valid">
+        <i class="fas fa-check"></i>
+      </span>
+      <span class="icon is-small is-right" *ngIf="password?.invalid && (password?.dirty || password?.touched || f.submitted)">
+        <i class="fas fa-times"></i>
+      </span>
+    </p>
+  </div>
+  <button class="button is-dark is-large is-fullwidth is-uppercase" [class.is-loading]="loading" type="submit" [disabled]="form.invalid">Login</button>
+</form>
