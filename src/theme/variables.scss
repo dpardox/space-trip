@@ -5,6 +5,12 @@ $family-sans-serif: 'Ubuntu', sans-serif;
 // Colors
 $black: #000000;
 $grey-darker: #111111;
+$blue: #3d69e1;
+$grey-lighter: #F5F5F5;
 
 // Spacing
 $spacing-values: ('4': .25rem, '8': .5rem, '12': .75rem, '16': 1rem, '20': 1.25rem, '24': 1.5rem, '30': 1.875rem, '40': 2.5rem, '60': 3.75rem);
+
+// Container
+$container-max-width: 1080px;
+$fullhd-enabled: false;

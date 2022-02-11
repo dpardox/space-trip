@@ -1,1 +1,71 @@
-<p>flight works!</p>
+<!-- Begin: banner -->
+<app-header></app-header>
+
+<section class="section banner is-relative pb-60">
+  <img [src]="'./assets/images/spaceflight-' + location?.value + '.jpg'">
+  <div>
+    <div class="container mt-16 pt-60">
+      <h1 class="title is-1 is-size-2-mobile has-text-white">SPACEFLIGHT</h1>
+      <p class="subtitle is-4 is-size-5-mobile has-text-white">Start planning your journey</p>
+      <!-- Begin: Search -->
+      <form [formGroup]="form" (submit)="submit()">
+        <div class="columns">
+          <div class="column is-3">
+            <div class="select is-fullwidth">
+              <select formControlName="location">
+                <option value="earth">EARTH ORBIT</option>
+                <option value="iss">SPACE STATION</option>
+                <option value="moon">MOON</option>
+                <option value="mars">MARS & BEYOND</option>
+              </select>
+            </div>
+          </div>
+          <div class="column is-3">
+            <input formControlName="start" class="input" type="date" placeholder="Start">
+          </div>
+          <div class="column is-3">
+            <input formControlName="end" class="input" type="date" placeholder="Start">
+          </div>
+          <div class="column is-1">
+            <input formControlName="humans" class="input" type="text" placeholder="Humans">
+          </div>
+          <div class="column is-2">
+            <button type="submit" class="button is-link is-fullwidth" [disabled]="form.invalid">SCHEDULE</button>
+          </div>
+        </div>
+      </form>
+      <!-- End: Search -->
+    </div>
+  </div>
+</section>
+<!-- End: banner -->
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <div class="columns">
+          <div class="column">
+            <div class="title is-5 has-text-centered is-uppercase">schedule</div>
+            <div class="box has-background-grey-lighter is-shadowless">
+              <div class="columns is-vcentered">
+                <div class="column is-narrow">
+                  <figure class="image is-48x48">
+                    <img class="is-rounded" [src]="'./assets/images/spaceflight-' + location?.value + '.jpg'">
+                  </figure>
+                </div>
+                <div class="column">
+                  <div class="title is-4">Moon</div>
+                  <div class="subtitle is-6">dates</div>
+                </div>
+                <div class="column is-narrow">
+                  4 Humans
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

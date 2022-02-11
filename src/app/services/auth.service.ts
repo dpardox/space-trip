@@ -19,7 +19,7 @@ export class AuthService {
       }
     };
 
-    return of(response).pipe(delay(3000), tap((x) => {
+    return of(response).pipe(delay(2000), tap((x) => {
       localStorage.setItem('session', JSON.stringify(x));
     }));
   }
@@ -38,10 +38,13 @@ export class AuthService {
   }
 
   public logout(): Observable<any> {
-    return of().pipe(delay(300), tap(() => {
-      this.router.navigateByUrl('/auth/login');
-      localStorage.removeItem('session');
-    }));
+    return of({}).pipe(
+      delay(300),
+      tap(() => {
+        localStorage.removeItem('session');
+        this.router.navigateByUrl('/auth/login');
+      })
+    );
   }
 
 }
