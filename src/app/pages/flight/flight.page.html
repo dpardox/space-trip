@@ -2,7 +2,7 @@
 <app-header></app-header>
 
 <section class="section banner is-relative pb-60">
-  <img [src]="'./assets/images/spaceflight-' + location?.value + '.jpg'">
+  <img [src]="'./assets/images/spaceflight-' + mission?.value + '.jpg'">
   <div>
     <div class="container mt-16 pt-60">
       <h1 class="title is-1 is-size-2-mobile has-text-white">SPACEFLIGHT</h1>
@@ -12,11 +12,8 @@
         <div class="columns">
           <div class="column is-3">
             <div class="select is-fullwidth">
-              <select formControlName="location">
-                <option value="earth">EARTH ORBIT</option>
-                <option value="iss">SPACE STATION</option>
-                <option value="moon">MOON</option>
-                <option value="mars">MARS & BEYOND</option>
+              <select formControlName="mission">
+                <option *ngFor="let i of missions$ | async" [value]="i.id">{{ i.name }}</option>
               </select>
             </div>
           </div>
@@ -47,22 +44,7 @@
         <div class="columns">
           <div class="column">
             <div class="title is-5 has-text-centered is-uppercase">schedule</div>
-            <div class="box has-background-grey-lighter is-shadowless">
-              <div class="columns is-vcentered">
-                <div class="column is-narrow">
-                  <figure class="image is-48x48">
-                    <img class="is-rounded" [src]="'./assets/images/spaceflight-' + location?.value + '.jpg'">
-                  </figure>
-                </div>
-                <div class="column">
-                  <div class="title is-4">Moon</div>
-                  <div class="subtitle is-6">dates</div>
-                </div>
-                <div class="column is-narrow">
-                  4 Humans
-                </div>
-              </div>
-            </div>
+            <app-schedule-card class="is-block mb-12" *ngFor="let schedule of schedules$ | async; let i=index" [data]="schedule" [index]="i"></app-schedule-card>
           </div>
         </div>
       </div>
